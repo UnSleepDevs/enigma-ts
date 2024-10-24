@@ -1,0 +1,9 @@
+{
+  "rotor": [
+    {
+      "initial_position": 1,
+      "end_position": 10
+    }
+  ],
+  "useDateRotor": true
+}

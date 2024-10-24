@@ -1,0 +1,17 @@
+{
+  "name": "proyectots++",
+  "module": "source/index.ts",
+  "type": "module",
+  "scripts": {
+    "build-win": "bun build --bytecode --compile source/index.ts --outfile little_enigma.exe",
+    "build": "bun build --bytecode --compile source/index.ts --outfile little_enigma",
+    "debug": "bun source/index.ts",
+    "reload": "bun --watch source/index.ts"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
