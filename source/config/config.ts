@@ -65,7 +65,7 @@ export class Config {
       throw Logger.Error(["You should have an array of Rotors of just one rotor!"], this.StaticLogger.setFunc(this.checkSettings), true);
     }
 
-    if (settings.useDateRotor === undefined && typeof settings.useDateRotor !== "boolean") {
+    if (!!settings.useDateRotor === undefined && typeof settings.useDateRotor !== "boolean") {
       throw Logger.Error(["useDateRotor is boolean property!"], this.StaticLogger.setFunc(this.checkSettings), true)
     }
   }

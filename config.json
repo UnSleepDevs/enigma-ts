@@ -1,0 +1,12 @@
+{
+  "rotors": [
+    {
+      "initial_position": 1,
+      "end_position": 10
+    },
+    {
+      "initial_position": 1,
+      "end_position": 20
+    }
+  ]
+}
