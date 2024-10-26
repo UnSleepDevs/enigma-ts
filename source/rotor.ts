@@ -1,3 +1,4 @@
+import HexTools from "./utils/hex_utils";
 import { Logger } from "./utils/logger";
 
 export interface AbstractRotor {
@@ -9,7 +10,7 @@ type SignalType = "reset" | "next";
 
 type AttachRotorType = "next" | "back";
 
-export class Rotor {
+export default class Rotor {
   protected NextRotor: Rotor | undefined;
   protected BackRotor: Rotor | undefined;
   protected Current: number;
@@ -38,6 +39,18 @@ export class Rotor {
     }
   }
 
+  public static Decode(rotor: Rotor, str: string): string {
+    const text = HexTools.UnbuildText(str);
+    let return_string = "";
+    for (let i = 0; i < text.length; i++) {
+      let char_code = Number(text[i]);
+      char_code -= rotor.Current;
+      return_string += char_code;
+      rotor.send_signal.bind(rotor)("next", 1);
+    }
+
+    return return_string;
+  }
   public static Encode(rotor: Rotor, str: string) {
     const ReturningArray: string[] = [];
     for (let i = 0; i < str.length; i++) {
@@ -49,6 +62,7 @@ export class Rotor {
     return ReturningArray;
   }
 
+  // FIXME: Reset rotor when sent a signal to next rotor.
   send_signal(signal_type: SignalType, i: number = 1) {
 
     if (signal_type === "reset") {
