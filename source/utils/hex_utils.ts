@@ -23,6 +23,6 @@ export default class HexTools {
   // TODO:
   // [ ] Clean text whit "trash"
   static UnbuildText(str: string) {
-    return str.split(this.MagicRegexp);
+    return str.split(this.MagicRegexp).slice(0, -1);
   }
 }

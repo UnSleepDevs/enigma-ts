@@ -43,9 +43,9 @@ export default class Rotor {
     const text = HexTools.UnbuildText(str);
     let return_string = "";
     for (let i = 0; i < text.length; i++) {
-      let char_code = Number(text[i]);
+      let char_code = Number("0x" + text[i]);
       char_code -= rotor.Current;
-      return_string += char_code;
+      return_string += String.fromCharCode(char_code);
       rotor.send_signal.bind(rotor)("next", 1);
     }
 

@@ -4,7 +4,6 @@ import type { Logger } from "../utils/logger";
 
 export default abstract class Worker {
   static Logger: Logger;
-  static work(conf: Config, args: typeof GetArguments.values): Promise<void> | void {
-
-  }
+  static saveMessage(args: typeof GetArguments.values, text: string | string[]): Promise<void> | void { };
+  static work(conf: Config, args: typeof GetArguments.values): Promise<void> | void { };
 }
