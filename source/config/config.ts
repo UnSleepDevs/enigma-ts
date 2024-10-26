@@ -1,5 +1,5 @@
 import { resolve } from "node:path";
-import { type AbstractRotor, Rotor } from "../rotor";
+import Rotor, { type AbstractRotor } from "../rotor";
 import { Logger } from "../utils/logger";
 import { CheckValidity } from "../utils/check_validity";
 
@@ -73,11 +73,12 @@ export class Config {
 
     const real_path = resolve(path);
     const file = Bun.file(real_path)
-    if (!file.exists()) {
+    if (!(await file.exists())) {
       return new Config({ initial_position: 1, end_position: 10 });
     }
 
     const json = await file.json() satisfies AbstractConfig;
     this.checkSettings(json);
+    return new Config(json.rotors)
   }
 }
