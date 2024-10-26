@@ -3,6 +3,7 @@ import { Config } from "../config/config.ts";
 import EncodeWorker from "./encode.ts";
 import DecodeWorker from "./decode.ts";
 import HelpWorker from "./help.ts";
+import GenKeyWorker from "./gen_key.ts";
 export default class Process {
   args: typeof get_args.values;
   config?: Config;
@@ -20,14 +21,13 @@ export default class Process {
   static GetInput(process: Process) {
     process.ReadConfig.bind(process)()
       .then(config => {
-        const { encode, decode } = process.args;
-        if (encode) {
+        const { encode, decode, genKey } = process.args;
+        if (encode)
           return EncodeWorker.work(config, process.args)
-        }
-
         if (decode)
           return DecodeWorker.work(config, process.args);
-
+        if (genKey)
+          return GenKeyWorker.work(config, process.args);
         return HelpWorker.work(config, process.args);
       })
   }

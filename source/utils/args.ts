@@ -21,6 +21,10 @@ const args = parseArgs({
     decode: {
       type: "boolean",
       short: "d"
+    },
+    genKey: {
+      type: "string",
+      short: "k"
     }
   }
 })
