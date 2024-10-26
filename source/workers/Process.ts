@@ -2,6 +2,7 @@ import get_args from "../utils/args.ts"
 import { Config } from "../config/config.ts";
 import EncodeWorker from "./encode.ts";
 import DecodeWorker from "./decode.ts";
+import HelpWorker from "./help.ts";
 export default class Process {
   args: typeof get_args.values;
   config?: Config;
@@ -26,6 +27,8 @@ export default class Process {
 
         if (decode)
           return DecodeWorker.work(config, process.args);
+
+        return HelpWorker.work(config, process.args);
       })
   }
 };
