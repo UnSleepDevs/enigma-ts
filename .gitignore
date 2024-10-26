@@ -177,3 +177,8 @@ dist
 *.tsc
 little_enigma
 little_enigma.exe
+
+## Somethings
+
+*.txt
+config.json
