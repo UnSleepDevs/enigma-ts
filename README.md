@@ -70,6 +70,14 @@ write on it
   ./little_enigma -c config.json       # Short version
   ```
 
+* **Create a key with a phrase**
+  * Example:
+
+  ```bash
+  ./little_enigma -genKey key.json     # Generates a key
+  ./little_enigma -k key.json          # Short version
+  ```
+
 **More commands is coming soon**
 
 **Docs here -> [Carlos Docs](./docs/readme.md)**
