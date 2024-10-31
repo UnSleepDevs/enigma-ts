@@ -1,12 +1,11 @@
 {
-  "name": "proyectots++",
+  "name": "little_enigma",
   "module": "source/index.ts",
   "type": "module",
   "scripts": {
-    "build-win": "bun build --bytecode --compile source/index.ts --outfile little_enigma.exe",
-    "build": "bun build --bytecode --compile source/index.ts --outfile little_enigma",
-    "debug": "bun source/index.ts",
-    "reload": "bun --watch source/index.ts"
+    "build-win": "bun build --bytecode --target=bun-windows-x64 --compile source/index.ts --minify --outfile build/little_enigma_nodeps.exe",
+    "build": "bun build --bytecode --compile source/index.ts --minify --outfile build/little_enigma_nodeps",
+    "build-standalone": "bun build --bytecode source/index.ts --minify --outfile build/little_enigma_universal"
   },
   "devDependencies": {
     "@types/bun": "latest"

@@ -1,0 +1,25 @@
+name: CI
+on: [push]
+
+env:
+  INPUT_KEY: ${{secrets.INPUT_KEY}}
+  OUTPUT_KEY: ${{secrets.OUTPUT_KEY}}
+
+jobs:
+  install:
+    name: Building
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout
+      - uses: oven-sh/setup-bun@v2
+      - run: cd ${{github.workspace}}
+      # Dependecy installation
+      - run: bun install
+      - run: bun run build
+      - run: bun run build-win
+      # universal :D (not tested)
+      - run: bun run build_standalone
+      - uses: actions/upload-artifact@v4.4.3
+      with: 
+        name: executables
+        path: ${{github.workspace}}/build
