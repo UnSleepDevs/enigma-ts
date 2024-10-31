@@ -6,7 +6,7 @@ env:
   OUTPUT_KEY: ${{secrets.OUTPUT_KEY}}
 
 jobs:
-  install:
+  build:
     name: Building
     runs-on: ubuntu-latest
     steps:
