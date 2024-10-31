@@ -5,7 +5,6 @@
   "scripts": {
     "build-win": "bun build --bytecode --target=bun-windows-x64 --compile source/index.ts --minify --outfile build/little_enigma_nodeps.exe",
     "build": "bun build --bytecode --compile source/index.ts --minify --outfile build/little_enigma_nodeps",
-    "build-standlone": "bun build --bytecode source/index.ts --minify --outfile build/little_enigma_universal"
   },
   "devDependencies": {
     "@types/bun": "latest"
