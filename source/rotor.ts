@@ -44,18 +44,27 @@ export default class Rotor {
     let return_string = "";
     for (let i = 0; i < text.length; i++) {
       let char_code = Number("0x" + text[i]);
-      char_code -= rotor.Current;
+      char_code = Rotor.MoveChar(rotor, char_code, -1);
       return_string += String.fromCharCode(char_code);
       rotor.send_signal.bind(rotor)("next", 1);
     }
 
     return return_string;
   }
+
+  public static MoveChar(rotor: Rotor, char: number, sence: number = 1): number {
+    if (!rotor.NextRotor)
+      return char + (rotor.Current * sence);
+    else {
+      return Rotor.MoveChar(rotor.NextRotor, char + (rotor.Current * sence), sence);
+    }
+  }
+
   public static Encode(rotor: Rotor, str: string) {
     const ReturningArray: string[] = [];
     for (let i = 0; i < str.length; i++) {
       let char_code = str[i].codePointAt(0)!;
-      char_code += rotor.Current;
+      char_code = Rotor.MoveChar(rotor, char_code);
       ReturningArray[i] = char_code.toString(16);
       rotor.send_signal.bind(rotor)("next");
     }
