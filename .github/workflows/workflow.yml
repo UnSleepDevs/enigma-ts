@@ -2,8 +2,8 @@ name: CI
 on: [push]
 
 env:
-  INPUT_KEY: ${{secrets.INPUT_KEY}}
-  OUTPUT_KEY: ${{secrets.OUTPUT_KEY}}
+  INPUT_KEY: ${{ secrets.INPUT_KEY }}
+  OUTPUT_KEY: ${{ secrets.OUTPUT_KEY }}
 
 jobs:
   build:
@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout
       - uses: oven-sh/setup-bun@v2
-      - run: cd ${{github.workspace}}
+      - run: cd ${{ github.workspace }}
       # Dependecy installation
       - run: bun install
       - run: bun run build
